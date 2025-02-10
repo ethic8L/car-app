@@ -1,7 +1,9 @@
 import { fetchCars } from "@/utils";
-import { HomeProps } from "@/types";
+import { HomeProps, CustomFilterProps } from "@/types";
 import { fuels, yearsOfProduction } from "@/constants";
-import { CarCard, CustomFilter, Hero } from "@/components";
+import { CarCard, CustomFilter, Hero, SearchBar } from "@/components";
+
+
 
 export default async function Home({ searchParams }: HomeProps) {
   const allCars = await fetchCars();
@@ -19,7 +21,9 @@ export default async function Home({ searchParams }: HomeProps) {
           <p>Explore out cars you might like</p>
         </div>
 
-        <div className='home__filters'>
+        <div className="home__filters">
+          <SearchBar />
+      
           <div className='home__filter-container'>
             <CustomFilter title='fuel' options={fuels} />
             <CustomFilter title='year' options={yearsOfProduction} />
@@ -30,7 +34,7 @@ export default async function Home({ searchParams }: HomeProps) {
           <section>
             <div className='home__cars-wrapper'>
               {allCars?.map((car) => (
-                <CarCard car={car} />
+                <CarCard car={car} key={car.id}/>
               ))}
             </div>
           </section>
