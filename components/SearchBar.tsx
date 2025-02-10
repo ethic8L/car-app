@@ -6,19 +6,17 @@ import { useState } from "react"
 import Image from "next/image"
 import SearchManufacturer from "./SearchManufacturer"
 
-const SearchButton = ({otherClasses}: {otherClasses: string}) => {
-    return (
-        <button type="submit" className={`-ml-3 z-10 ${otherClasses}`}>
-            <Image 
-                src="/magnifying-glass.svg"
-                alt="search"
-                width={40}
-                height={40}
-                className="object-contain"
-            />
-        </button>
-    );
-}
+const SearchButton = ({otherClasses}: {otherClasses: string}) => (
+    <button type="submit" className={`-ml-3 z-10 ${otherClasses}`}>
+        <Image 
+            src="/magnifying-glass.svg"
+            alt="search"
+            width={40}
+            height={40}
+            className="object-contain"
+        />
+    </button>
+);
 
 const SearchBar = () => {
     const [manufacturer, setManufacturer] = useState('');
@@ -28,7 +26,7 @@ const SearchBar = () => {
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if(manufacturer === '' && model === '') {
+        if(manufacturer.trim() === '' && model.trim() === '') {
             return alert('Please fill the search bar');
         }
 
