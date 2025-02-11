@@ -11,8 +11,8 @@ const SearchManufacturer = ({ manufacturer, setManuFacturer }: SearchManuFacture
   const filteredManufacturers =
     query === ""
       ? manufacturers
-      : manufacturers.filter((manufacturer) =>
-          manufacturer
+      : manufacturers.filter((item) =>
+          item
             .toLowerCase()
             .replace(/\s+/g, "")
             .includes(query.toLowerCase().replace(/\s+/g, ""))
